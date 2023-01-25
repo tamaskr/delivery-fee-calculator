@@ -4,7 +4,8 @@
     "value": "Cart value",
     "distance": "Delivery distance",
     "amount": "Amount of items",
-    "time": "Time"
+    "time": "Time",
+    "calculate": "Calculate"
   },
   "form": {
     "errors": {

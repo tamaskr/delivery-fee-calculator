@@ -13,5 +13,8 @@ export const theme = createTheme({
       color: '#212427',
       fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     },
+    button: {
+      textTransform: 'none'
+    }
   },
 });
