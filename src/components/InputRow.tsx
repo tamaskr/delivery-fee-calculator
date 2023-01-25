@@ -2,12 +2,14 @@ import {
   InputAdornment,
   Typography,
   InputBaseComponentProps,
+  Collapse,
 } from '@mui/material';
 import { ChangeEvent, FocusEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Units } from '../constants/units';
 import { theme } from '../theme/default';
 import { InputContainer, InputField } from '../styles/input';
+import { TransitionGroup } from 'react-transition-group';
 
 type InputRowProps = {
   id?: string;
@@ -57,15 +59,19 @@ export const InputRow = ({
           />
         )}
       </InputContainer>
-      {errorMessage && (
-        <Typography
-          variant="body2"
-          textAlign="end"
-          color={theme.palette.error.dark}
-        >
-          {t(errorMessage)}
-        </Typography>
-      )}
+      <TransitionGroup>
+        {errorMessage && (
+          <Collapse unmountOnExit>
+            <Typography
+              variant="body2"
+              textAlign="end"
+              color={theme.palette.error.dark}
+            >
+              {t(errorMessage)}
+            </Typography>
+          </Collapse>
+        )}
+      </TransitionGroup>
     </>
   );
 };

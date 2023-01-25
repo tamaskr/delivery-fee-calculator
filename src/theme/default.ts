@@ -5,6 +5,7 @@ export const theme = createTheme({
   palette: {
     primary: { main: '#4D4DBD' },
     secondary: { main: '#8859B5' },
+    background: { default: '#FEFEFE' },
   },
   // Custom properties for all texts
   typography: {
