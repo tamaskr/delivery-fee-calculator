@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { AppContainer } from './design/common';
+import { Box, CssBaseline, ThemeProvider, styled } from '@mui/material';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { theme } from './design/theme';
 import App from './App';
 import './i18n/i18n';
-import { theme } from './design/theme/default';
+
+const MainLayout = styled(Box)({
+  display: 'flex',
+  minHeight: '100vh',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,10 +21,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <CssBaseline />
-    <ThemeProvider theme={theme}>
-      <AppContainer>
-        <App />
-      </AppContainer>
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <ThemeProvider theme={theme}>
+        <MainLayout>
+          <App />
+        </MainLayout>
+      </ThemeProvider>
+    </LocalizationProvider>
   </React.StrictMode>
 );
