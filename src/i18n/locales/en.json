@@ -1,5 +1,22 @@
 {
-    "general": {
-        "title": "Delivery Fee Calculator"
+  "general": {
+    "title": "Delivery Fee Calculator",
+    "value": "Cart value",
+    "distance": "Delivery distance",
+    "amount": "Amount of items",
+    "time": "Time"
+  },
+  "form": {
+    "errors": {
+      "required": {
+        "value": "Cart value is required",
+        "distance": "Distance is required",
+        "amount": "Amount is required",
+        "time": "Time is required"
+      },
+      "typeError": {
+        "time": "Please set a valid time"
+      }
     }
+  }
 }
