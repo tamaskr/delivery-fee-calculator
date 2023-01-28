@@ -13,7 +13,7 @@ export const calculateDeliveryFee = ({
   freeDeliveryTreshold = FREE_DELIVERY_TRESHOLD,
 }: CalculatorProps) => {
   // Regardless of other values, delivery fee will be 0 if the order value exceeds the free delivery treshold
-  if (orderValue > freeDeliveryTreshold) return 0;
+  if (orderValue >= freeDeliveryTreshold) return 0;
   // Fee for small value orders
   const smallOrderSurcharge = calculateSmallOrderSurcharge({ orderValue });
   // Fee based on distance

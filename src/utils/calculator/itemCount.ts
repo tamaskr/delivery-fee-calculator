@@ -15,7 +15,7 @@ export const calculateItemCountSurcharge = ({
   largeOrderFee = LARGE_ORDER_FEE,
 }: ItemCountSurchargeCalculatorProps): number => {
   // No surcharge will be added if the item count is below the free limit
-  if (itemCount >= freeItemLimit) return 0;
+  if (itemCount <= freeItemLimit) return 0;
   // Calculate extra charge per piece
   const extraItemSurcharge = (itemCount - freeItemLimit) * extraItemFee;
   return itemCount >= largeOrderLimit
