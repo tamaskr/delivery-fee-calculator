@@ -6,7 +6,7 @@ import {
 } from '../../constants/calculator';
 import { ItemCountSurchargeCalculatorProps } from '../../types/calculator';
 
-// Calculates an extra fee for small orders below a given limit
+// Calculates an extra fee based on the count of items
 export const calculateItemCountSurcharge = ({
   itemCount,
   freeItemLimit = FREE_ITEM_LIMIT,
@@ -18,7 +18,10 @@ export const calculateItemCountSurcharge = ({
   if (itemCount <= freeItemLimit) return 0;
   // Calculate extra charge per piece
   const extraItemSurcharge = (itemCount - freeItemLimit) * extraItemFee;
-  return itemCount >= largeOrderLimit
-    ? largeOrderFee + extraItemSurcharge
-    : extraItemSurcharge;
+  // Add the large order fee if the amount of items exceeds the limit
+  const itemCountSurcharge =
+    itemCount >= largeOrderLimit
+      ? largeOrderFee + extraItemSurcharge
+      : extraItemSurcharge;
+  return itemCountSurcharge;
 };

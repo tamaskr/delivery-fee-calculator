@@ -1,5 +1,4 @@
-// When using date-fns, day of the week counter from Sunday => 0
-// https://date-fns.org/v2.29.3/docs/getDay
+// Day of the week counter starting from Sunday = 0
 export enum Days {
   Sunday,
   Monday,

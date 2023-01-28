@@ -1,18 +1,18 @@
+import { useState } from 'react';
 import { Collapse, Grow, TextFieldProps, Typography } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
+import { TransitionGroup } from 'react-transition-group';
 import { theme } from './theme/default';
 import { numberValidator, validateCurrencyValue } from './utils/validation';
 import { Units } from './constants/units';
 import { InputRow } from './components/InputRow';
 import { ContentContainer, GradientTitle } from './styles/common';
 import { InputField } from './styles/input';
-import { TransitionGroup } from 'react-transition-group';
 import { PrimaryButton, TextButton } from './styles/buttons';
 import { calculateDeliveryFee } from './utils/calculator';
-import { useState } from 'react';
 
 const initialFormValues = {
   value: '',
@@ -54,7 +54,7 @@ const App = () => {
       orderValue: Number(value),
       distance: Number(distance),
       itemCount: Number(itemCount),
-      time: time.toUTCString(),
+      time,
     });
     setDeliveryFee(deliveryFee);
   };
@@ -83,6 +83,7 @@ const App = () => {
               setFieldValue,
             }) => (
               <Form autoComplete="off">
+                {/* Input for order value */}
                 <InputRow
                   id="value"
                   type="number"
@@ -99,6 +100,7 @@ const App = () => {
                   }}
                   onBlur={handleBlur}
                 />
+                {/* Input for order distance */}
                 <InputRow
                   id="distance"
                   type="number"
@@ -110,6 +112,7 @@ const App = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                {/* Input for count of items */}
                 <InputRow
                   id="itemCount"
                   type="number"
@@ -120,6 +123,7 @@ const App = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                {/* Custom date and time picker input for order time */}
                 <InputRow
                   title="general.time"
                   error={touched.time && (errors.time as string)}

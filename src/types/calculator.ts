@@ -4,14 +4,14 @@ export type CalculatorProps = {
   orderValue: number;
   distance: number;
   itemCount: number;
-  time: string;
+  time: Date;
   freeDeliveryTreshold?: number;
   deliveryFeeCap?: number;
 };
 
 export type SmallOrderSurchargeCalculatorProps = {
   orderValue: number;
-  minOrderValue?: number;
+  smallOrderLimit?: number;
 };
 
 export type DistanceSurchargeCalculatorProps = {
@@ -38,7 +38,7 @@ export type RushHourPeriod = {
 
 export type RushHourSurchargeCalculatorProps = {
   currentFee: number;
-  time: string;
+  time: Date;
   rushHourPeriods?: RushHourPeriod[];
   multiplier?: number;
 };

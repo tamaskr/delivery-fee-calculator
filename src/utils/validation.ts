@@ -3,7 +3,7 @@ import * as yup from 'yup';
 export const numberValidator = (label: string) => {
   return yup
     .number()
-    .min(0,`form.errors.min.${label}`)
+    .min(0, `form.errors.min.${label}`)
     .typeError(`form.errors.typeError.${label}`)
     .required(`form.errors.required.${label}`);
 };

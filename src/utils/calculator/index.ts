@@ -36,7 +36,7 @@ export const calculateDeliveryFee = ({
   // The total delivery fee should be capped before returning the final value
   const cappedTotalFee =
     totalFeeWithRushHourSurcharge > deliveryFeeCap
-      ? totalFeeWithRushHourSurcharge
-      : deliveryFeeCap;
+      ? deliveryFeeCap
+      : totalFeeWithRushHourSurcharge;
   return cappedTotalFee.toFixed(2);
 };

@@ -6,7 +6,11 @@ import {
 } from '../../constants/calculator';
 import { DistanceSurchargeCalculatorProps } from '../../types/calculator';
 
-// Calculates an extra fee for small orders below a given limit
+/*
+  Calculates the distance surcharge
+   - the initial fee is always added
+   - additional distance fee will be calculated on top
+*/
 export const calculateDistanceSurcharge = ({
   distance,
   initialDistance = INITIAL_DISTANCE,
