@@ -3,7 +3,7 @@ import { RushHourPeriod } from './../../types/calculator';
 import { RUSH_HOURS, RUSH_HOUR_MULTIPLIER } from '../../constants/calculator';
 import { RushHourSurchargeCalculatorProps } from '../../types/calculator';
 
-// Calculates an extra fee for orders made within any of the given rush hours
+// Calculates an extra fee for orders made within the given rush hour periods
 export const calculateRushHourSurcharge = ({
   currentFee,
   time,
@@ -12,16 +12,16 @@ export const calculateRushHourSurcharge = ({
 }: RushHourSurchargeCalculatorProps): number => {
   // Format the given time to UTC time zone
   const timeInUTC = moment.utc(time);
-  // Get the day of the week for the passed UTC time
+  // Get the UTC day of the week
   const dayOfTheWeekInUTC = timeInUTC.day();
-  // Convert the current time to hh:mm format in UTC time
+  // Convert the UTC time to HH:mm format
   const hoursAndMinutesInUTC = timeInUTC.format('HH:mm');
-  // Check if the time is in any of the rush hour periods
+  // Check if the UTC time is in any of the rush hour periods
   const isRushHour = rushHourPeriods
     .map((rushHour: RushHourPeriod) => {
       // Check if the day of the week matches
       const isSameDay = dayOfTheWeekInUTC === rushHour.day;
-      // Check if the day and the time period both match
+      // Check if the time period matches
       const isInTimePeriod =
         hoursAndMinutesInUTC >= rushHour.from &&
         hoursAndMinutesInUTC <= rushHour.to;
