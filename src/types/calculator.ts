@@ -1,9 +1,12 @@
+import { Days } from '../constants/days';
+
 export type CalculatorProps = {
   orderValue: number;
   distance: number;
   itemCount: number;
   time: string;
   freeDeliveryTreshold?: number;
+  deliveryFeeCap?: number;
 };
 
 export type SmallOrderSurchargeCalculatorProps = {
@@ -25,4 +28,16 @@ export type ItemCountSurchargeCalculatorProps = {
   extraItemFee?: number;
   largeOrderLimit?: number;
   largeOrderFee?: number;
+};
+
+export type RushHourPeriod = {
+  day: Days;
+  from: number;
+  to: number;
+};
+
+export type RushHourSurchargeCalculatorProps = {
+  currentFee: number;
+  rushHourPeriods?: RushHourPeriod[];
+  multiplier?: number;
 };
