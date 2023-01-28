@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material';
 
 // Setup MaterialUI theme
 export const theme = createTheme({
+  // Custom color palette
   palette: {
     primary: { main: '#4D4DBD' },
     secondary: { main: '#8859B5' },
@@ -14,7 +15,7 @@ export const theme = createTheme({
       fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     },
     button: {
-      textTransform: 'none'
-    }
+      textTransform: 'none',
+    },
   },
 });

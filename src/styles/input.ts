@@ -4,7 +4,8 @@ export const InputField = styled(TextField)(({ theme }) => ({
   width: '50%',
   '& fieldset': {
     borderRadius: theme.spacing(1.5),
-    transition : '500ms',
+    transition: '500ms',
+    borderWidth: '2px',
   },
   '& input': {
     textAlign: 'right',
