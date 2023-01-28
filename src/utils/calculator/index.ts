@@ -11,9 +11,9 @@ export const calculateDeliveryFee = ({
   itemCount,
   time,
   freeDeliveryTreshold = FREE_DELIVERY_TRESHOLD,
-}: CalculatorProps) => {
+}: CalculatorProps): string => {
   // Regardless of other values, delivery fee will be 0 if the order value exceeds the free delivery treshold
-  if (orderValue >= freeDeliveryTreshold) return 0;
+  if (orderValue >= freeDeliveryTreshold) return '0';
   // Fee for small value orders
   const smallOrderSurcharge = calculateSmallOrderSurcharge({ orderValue });
   // Fee based on distance
@@ -25,5 +25,5 @@ export const calculateDeliveryFee = ({
 
   //TODO - RUSH HOUR SURCHARGE
 
-  return totalFee;
+  return totalFee.toFixed(2);
 };
