@@ -17,7 +17,7 @@ type InputRowProps = {
   title: string;
   unit?: Units;
   value?: TextFieldProps['value'];
-  errorMessage?: string;
+  error?: string | boolean;
   inputProps?: InputBaseComponentProps;
   onChange?: TextFieldProps['onChange'];
   onBlur?: TextFieldProps['onBlur'];
@@ -30,7 +30,7 @@ export const InputRow = ({
   title,
   unit,
   value,
-  errorMessage,
+  error,
   inputProps,
   onChange,
   onBlur,
@@ -56,19 +56,19 @@ export const InputRow = ({
             value={value}
             onChange={onChange}
             onBlur={onBlur}
-            error={!!errorMessage}
+            error={!!error}
           />
         )}
       </InputContainer>
       <TransitionGroup>
-        {errorMessage && (
+        {typeof error === 'string' && (
           <Collapse unmountOnExit>
             <Typography
               variant="body2"
               textAlign="end"
               color={theme.palette.error.dark}
             >
-              {t(errorMessage)}
+              {t(error)}
             </Typography>
           </Collapse>
         )}

@@ -12,10 +12,10 @@
   "form": {
     "errors": {
       "required": {
-        "value": "Cart value cannot be empty",
-        "distance": "Distance cannot be empty",
-        "itemCount": "Amount cannot be empty",
-        "time": "Time cannot be empty"
+        "value": "Please enter a valid cart value",
+        "distance": "Please enter a valid distance",
+        "itemCount": "Please enter a valid amount",
+        "time": "Please enter a valid time"
       },
       "typeError": {
         "value": "Please enter a valid numerical value for the cart.",

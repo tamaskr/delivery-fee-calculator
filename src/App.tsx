@@ -87,9 +87,7 @@ const App = () => {
                   title="general.value"
                   unit={Units.Euro}
                   value={values.value}
-                  errorMessage={
-                    touched.value && errors.value ? errors.value : undefined
-                  }
+                  error={touched.value && errors.value}
                   inputProps={{ inputMode: 'numeric' }}
                   onChange={(event) => {
                     const value = event.target.value;
@@ -105,11 +103,7 @@ const App = () => {
                   title="general.distance"
                   unit={Units.Meter}
                   value={values.distance}
-                  errorMessage={
-                    touched.distance && errors.distance
-                      ? errors.distance
-                      : undefined
-                  }
+                  error={touched.distance && errors.distance}
                   inputProps={{ inputMode: 'numeric' }}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -119,24 +113,14 @@ const App = () => {
                   type="number"
                   title="general.itemCount"
                   value={values.itemCount}
-                  errorMessage={
-                    touched.itemCount && errors.itemCount
-                      ? errors.itemCount
-                      : undefined
-                  }
+                  error={touched.itemCount && errors.itemCount}
                   inputProps={{ inputMode: 'numeric' }}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <InputRow
                   title="general.time"
-                  errorMessage={
-                    touched.time &&
-                    errors.time &&
-                    typeof errors.time === 'string'
-                      ? errors.time
-                      : undefined
-                  }
+                  error={touched.time && errors.time as string}
                 >
                   <DateTimePicker
                     value={values.time}
