@@ -22,11 +22,13 @@ const initialFormValues = {
 };
 
 const validationSchema = yup.object({
-  value: numberValidator('value'),
-  distance: numberValidator('distance').integer('form.errors.integer.distance'),
-  itemCount: numberValidator('itemCount').integer(
-    'form.errors.integer.itemCount'
-  ),
+  value: numberValidator('value').max(100000, 'form.errors.max.value'),
+  distance: numberValidator('distance')
+    .max(50000, 'form.errors.max.distance')
+    .integer('form.errors.integer.distance'),
+  itemCount: numberValidator('itemCount')
+    .max(500, 'form.errors.max.itemCount')
+    .integer('form.errors.integer.itemCount'),
   time: yup
     .date()
     .typeError('form.errors.typeError.time')
@@ -34,7 +36,7 @@ const validationSchema = yup.object({
 });
 
 const App = () => {
-  const [deliveryFee, setDeliveryFee] = useState<number | null>();
+  const [deliveryFee, setDeliveryFee] = useState<string | null>();
   const { t } = useTranslation();
 
   const onSubmit = ({
@@ -120,7 +122,7 @@ const App = () => {
                 />
                 <InputRow
                   title="general.time"
-                  error={touched.time && errors.time as string}
+                  error={touched.time && (errors.time as string)}
                 >
                   <DateTimePicker
                     value={values.time}

@@ -31,6 +31,11 @@
         "value": "Cart value cannot be negative",
         "distance": "Distance cannot be negative",
         "itemCount": "Amount cannot be negative"
+      },
+      "max": {
+        "value": "Cart value exceeds the maximum value",
+        "distance": "Distance exceeds the maximum value",
+        "itemCount": "Amount exceeds the maximum value"
       }
     }
   }
