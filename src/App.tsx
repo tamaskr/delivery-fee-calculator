@@ -36,8 +36,9 @@ const validationSchema = yup.object({
 });
 
 const App = () => {
-  const [deliveryFee, setDeliveryFee] = useState<string | null>();
   const { t } = useTranslation();
+
+  const [deliveryFee, setDeliveryFee] = useState<string | null>();
 
   const onSubmit = ({
     value,

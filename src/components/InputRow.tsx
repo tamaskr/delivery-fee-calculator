@@ -37,6 +37,7 @@ export const InputRow = ({
   children,
 }: InputRowProps) => {
   const { t } = useTranslation();
+
   return (
     <>
       <InputContainer>
