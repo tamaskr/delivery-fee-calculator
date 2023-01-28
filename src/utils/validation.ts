@@ -1,7 +1,11 @@
 import * as yup from 'yup';
 
 export const numberValidator = (label: string) => {
-  return yup.number().required(`form.errors.required.${label}`);
+  return yup
+    .number()
+    .min(0,`form.errors.min.${label}`)
+    .typeError(`form.errors.typeError.${label}`)
+    .required(`form.errors.required.${label}`);
 };
 
 export const validateCurrencyValue = (

@@ -3,20 +3,34 @@
     "title": "Delivery Fee Calculator",
     "value": "Cart value",
     "distance": "Delivery distance",
-    "amount": "Amount of items",
+    "itemCount": "Amount of items",
     "time": "Time",
-    "calculate": "Calculate"
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "deliveryFeeTitle": "Your delivery fee is"
   },
   "form": {
     "errors": {
       "required": {
-        "value": "Cart value is required",
-        "distance": "Distance is required",
-        "amount": "Amount is required",
-        "time": "Time is required"
+        "value": "Cart value cannot be empty",
+        "distance": "Distance cannot be empty",
+        "itemCount": "Amount cannot be empty",
+        "time": "Time cannot be empty"
       },
       "typeError": {
+        "value": "Please enter a valid numerical value for the cart.",
+        "distance": "Please enter a valid numerical value for the distance.",
+        "itemCount": "Please enter a valid numerical value for the amount of items",
         "time": "Please set a valid time"
+      },
+      "integer": {
+        "distance": "Please enter a valid whole number for the distance",
+        "itemCount": "Please enter a valid whole number for the amount"
+      },
+      "min": {
+        "value": "Cart value cannot be negative",
+        "distance": "Distance cannot be negative",
+        "itemCount": "Amount cannot be negative"
       }
     }
   }

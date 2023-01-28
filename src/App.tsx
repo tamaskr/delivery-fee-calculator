@@ -1,4 +1,4 @@
-import { Grow, TextFieldProps } from '@mui/material';
+import { Collapse, Grow, TextFieldProps, Typography } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
@@ -10,19 +10,23 @@ import { InputRow } from './components/InputRow';
 import { ContentContainer, GradientTitle } from './styles/common';
 import { InputField } from './styles/input';
 import { TransitionGroup } from 'react-transition-group';
-import { PrimaryButton } from './styles/buttons';
+import { PrimaryButton, TextButton } from './styles/buttons';
+import { calculateDeliveryFee } from './utils/calculator';
+import { useState } from 'react';
 
 const initialFormValues = {
   value: '',
   distance: '',
-  amount: '',
+  itemCount: '',
   time: new Date(),
 };
 
 const validationSchema = yup.object({
   value: numberValidator('value'),
-  distance: numberValidator('distance'),
-  amount: numberValidator('amount'),
+  distance: numberValidator('distance').integer('form.errors.integer.distance'),
+  itemCount: numberValidator('itemCount').integer(
+    'form.errors.integer.itemCount'
+  ),
   time: yup
     .date()
     .typeError('form.errors.typeError.time')
@@ -30,20 +34,27 @@ const validationSchema = yup.object({
 });
 
 const App = () => {
+  const [deliveryFee, setDeliveryFee] = useState<number | null>();
   const { t } = useTranslation();
 
   const onSubmit = ({
     value,
     distance,
-    amount,
+    itemCount,
     time,
   }: {
     value: string;
     distance: string;
-    amount: string;
+    itemCount: string;
     time: Date;
   }) => {
-    console.log('onSubmit');
+    const deliveryFee = calculateDeliveryFee({
+      orderValue: Number(value),
+      distance: Number(distance),
+      itemCount: Number(itemCount),
+      time: time.toUTCString(),
+    });
+    setDeliveryFee(deliveryFee);
   };
 
   return (
@@ -58,10 +69,21 @@ const App = () => {
             onSubmit={onSubmit}
             validationSchema={validationSchema}
           >
-            {({ values, errors, touched, isValid, dirty, handleBlur, setFieldValue }) => (
+            {({
+              values,
+              errors,
+              touched,
+              isValid,
+              dirty,
+              handleChange,
+              handleReset,
+              handleBlur,
+              setFieldValue,
+            }) => (
               <Form autoComplete="off">
                 <InputRow
                   id="value"
+                  type="number"
                   title="general.value"
                   unit={Units.Euro}
                   value={values.value}
@@ -79,6 +101,7 @@ const App = () => {
                 />
                 <InputRow
                   id="distance"
+                  type="number"
                   title="general.distance"
                   unit={Units.Meter}
                   value={values.distance}
@@ -88,27 +111,21 @@ const App = () => {
                       : undefined
                   }
                   inputProps={{ inputMode: 'numeric' }}
-                  onChange={(event) => {
-                    const value = event.target.value;
-                    setFieldValue('distance', value.replace(/\D/g, ''));
-                  }}
+                  onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <InputRow
-                  id="amount"
-                  title="general.amount"
-                  value={values.amount}
+                  id="itemCount"
+                  type="number"
+                  title="general.itemCount"
+                  value={values.itemCount}
                   errorMessage={
-                    touched.amount && errors.amount ? errors.amount : undefined
+                    touched.itemCount && errors.itemCount
+                      ? errors.itemCount
+                      : undefined
                   }
-                  inputProps={{
-                    inputMode: 'numeric',
-                    style: { paddingRight: theme.spacing(2) },
-                  }}
-                  onChange={(event) => {
-                    const value = event.target.value;
-                    setFieldValue('amount', value.replace(/\D/g, ''));
-                  }}
+                  inputProps={{ inputMode: 'numeric' }}
+                  onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <InputRow
@@ -138,6 +155,37 @@ const App = () => {
                 >
                   {t('general.calculate')}
                 </PrimaryButton>
+                <TransitionGroup>
+                  {deliveryFee && (
+                    <Collapse unmountOnExit>
+                      <TextButton
+                        size="small"
+                        disableRipple
+                        style={{ marginTop: theme.spacing(1) }}
+                        onClick={() => {
+                          setDeliveryFee(null);
+                          handleReset();
+                        }}
+                      >
+                        {t('general.reset')}
+                      </TextButton>
+                      <Typography
+                        variant="h6"
+                        textAlign="center"
+                        sx={{ marginTop: theme.spacing(2) }}
+                      >
+                        {t('general.deliveryFeeTitle')}
+                      </Typography>
+                      <GradientTitle
+                        variant="h3"
+                        fontWeight="bold"
+                        textAlign="center"
+                      >
+                        {`${deliveryFee} ${Units.Euro}`}
+                      </GradientTitle>
+                    </Collapse>
+                  )}
+                </TransitionGroup>
               </Form>
             )}
           </Formik>

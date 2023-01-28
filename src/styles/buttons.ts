@@ -20,3 +20,10 @@ export const PrimaryButton = styled(Button)(({ theme }) => ({
     pointerEvents: 'all !important',
   },
 }));
+
+export const TextButton = styled(Button)(({ theme }) => ({
+  display: 'flex',
+  margin: '0 auto',
+  borderRadius: theme.spacing(1.5),
+  color: theme.palette.primary.main,
+}));
