@@ -32,8 +32,8 @@ export type ItemCountSurchargeCalculatorProps = {
 
 export type RushHourPeriod = {
   day: Days;
-  from: number;
-  to: number;
+  from: string;
+  to: string;
 };
 
 export type RushHourSurchargeCalculatorProps = {
