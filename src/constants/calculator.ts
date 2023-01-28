@@ -2,7 +2,7 @@
 export const SMALL_ORDER_LIMIT = 10;
 
 // Minimum order value to qualify for free shipping (euros)
-export const FREE_DELIVERY_TRESHOLD = 10;
+export const FREE_DELIVERY_TRESHOLD = 100;
 
 // Initial distance that is included in the initial charge (meters)
 export const INITIAL_DISTANCE = 1000;
