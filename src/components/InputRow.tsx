@@ -3,8 +3,8 @@ import {
   Typography,
   InputBaseComponentProps,
   Collapse,
+  TextFieldProps,
 } from '@mui/material';
-import { ChangeEvent, FocusEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Units } from '../constants/units';
 import { theme } from '../theme/default';
@@ -13,20 +13,20 @@ import { TransitionGroup } from 'react-transition-group';
 
 type InputRowProps = {
   id?: string;
+  type?: TextFieldProps['type'];
   title: string;
   unit?: Units;
-  value?: string | number | Date;
+  value?: TextFieldProps['value'];
   errorMessage?: string;
   inputProps?: InputBaseComponentProps;
-  onChange?: (
-    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
-  onBlur?: FocusEventHandler<HTMLTextAreaElement | HTMLInputElement>;
+  onChange?: TextFieldProps['onChange'];
+  onBlur?: TextFieldProps['onBlur'];
   children?: React.ReactNode;
 };
 
 export const InputRow = ({
   id,
+  type,
   title,
   unit,
   value,
@@ -44,6 +44,7 @@ export const InputRow = ({
         {children ?? (
           <InputField
             id={id}
+            type={type ?? 'text'}
             InputProps={{
               inputProps,
               ...(unit && {
