@@ -38,6 +38,7 @@ export type RushHourPeriod = {
 
 export type RushHourSurchargeCalculatorProps = {
   currentFee: number;
+  time: string;
   rushHourPeriods?: RushHourPeriod[];
   multiplier?: number;
 };
