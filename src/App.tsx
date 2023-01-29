@@ -37,6 +37,7 @@ const App = () => {
 
   const [deliveryFee, setDeliveryFee] = useState<string | null>();
 
+  // Calculate the delivery fee after submitting the form
   const onSubmit = ({ value, distance, itemCount, time }: FormValues) => {
     const deliveryFee = calculateDeliveryFee({
       orderValue: Number(value),
@@ -118,7 +119,7 @@ const App = () => {
                       >
                         {t('general.reset')}
                       </TextButton>
-                      <Typography variant="h6" textAlign="center" sx={{ marginTop: theme.spacing(2) }}>
+                      <Typography textAlign="center" sx={{ marginTop: theme.spacing(2) }}>
                         {t('general.deliveryFeeTitle')}
                       </Typography>
                       <GradientTitle variant="h3" fontWeight="bold" textAlign="center">
