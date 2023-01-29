@@ -10,9 +10,13 @@ import { theme } from './theme/default';
 import { numberValidator, validateCurrency } from './utils/validation';
 import { Units } from './constants/units';
 import { InputRow } from './components/InputRow';
-import { ContentContainer, GradientTitle } from './styles/common';
-import { InputField } from './styles/input';
-import { PrimaryButton, TextButton } from './styles/buttons';
+import {
+  GradientTitle,
+  InputField,
+  ContentContainer,
+  PrimaryButton,
+  TextButton,
+} from './styles';
 import { calculateDeliveryFee } from './utils/calculator';
 import { FormValues } from './types/form';
 
