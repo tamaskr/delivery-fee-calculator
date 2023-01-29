@@ -14,8 +14,9 @@ import { ContentContainer, GradientTitle } from './styles/common';
 import { InputField } from './styles/input';
 import { PrimaryButton, TextButton } from './styles/buttons';
 import { calculateDeliveryFee } from './utils/calculator';
+import { FormValues } from './types/form';
 
-const initialFormValues = {
+const initialFormValues: FormValues = {
   value: '',
   distance: '',
   itemCount: '',
@@ -43,17 +44,7 @@ const App = () => {
 
   const [deliveryFee, setDeliveryFee] = useState<string | null>();
 
-  const onSubmit = ({
-    value,
-    distance,
-    itemCount,
-    time,
-  }: {
-    value: string;
-    distance: string;
-    itemCount: string;
-    time: Date;
-  }) => {
+  const onSubmit = ({ value, distance, itemCount, time }: FormValues) => {
     const deliveryFee = calculateDeliveryFee({
       orderValue: Number(value),
       distance: Number(distance),
