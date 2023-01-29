@@ -36,7 +36,8 @@
         "value": "Cart value exceeds the maximum value",
         "distance": "Distance exceeds the maximum value",
         "itemCount": "Amount exceeds the maximum value"
-      }
+      },
+      "currency": "Please add a valid currency"
     }
   }
 }

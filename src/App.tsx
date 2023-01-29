@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { TransitionGroup } from 'react-transition-group';
 import { theme } from './theme/default';
-import { numberValidator, validateCurrencyValue } from './utils/validation';
+import { numberValidator, validateCurrency } from './utils/validation';
 import { Units } from './constants/units';
 import { InputRow } from './components/InputRow';
 import { ContentContainer, GradientTitle } from './styles/common';
@@ -22,7 +22,9 @@ const initialFormValues = {
 };
 
 const validationSchema = yup.object({
-  value: numberValidator('value').max(100000, 'form.errors.max.value'),
+  value: numberValidator('value')
+    .max(100000, 'form.errors.max.value')
+    .test('currency', 'form.errors.currency', validateCurrency),
   distance: numberValidator('distance')
     .max(50000, 'form.errors.max.distance')
     .integer('form.errors.integer.distance'),
@@ -93,12 +95,7 @@ const App = () => {
                   value={values.value}
                   error={touched.value && errors.value}
                   inputProps={{ inputMode: 'numeric' }}
-                  onChange={(event) => {
-                    const value = event.target.value;
-                    validateCurrencyValue(value, (formattedValue) => {
-                      setFieldValue('value', formattedValue);
-                    });
-                  }}
+                  onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 {/* Input for order distance */}
@@ -140,7 +137,6 @@ const App = () => {
                 </InputRow>
                 <PrimaryButton
                   type="submit"
-                  disableRipple
                   disabled={!(isValid && dirty)}
                   sx={{ marginTop: theme.spacing(3) }}
                 >
