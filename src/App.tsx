@@ -5,6 +5,7 @@ import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { TransitionGroup } from 'react-transition-group';
+import CountUp from 'react-countup';
 import { theme } from './theme/default';
 import { numberValidator, validateCurrency } from './utils/validation';
 import { Units } from './constants/units';
@@ -168,7 +169,15 @@ const App = () => {
                         fontWeight="bold"
                         textAlign="center"
                       >
-                        {`${deliveryFee} ${Units.Euro}`}
+                        <CountUp
+                          start={0}
+                          end={Number(deliveryFee)}
+                          duration={0.5}
+                          separator=" "
+                          decimals={2}
+                          decimal="."
+                          suffix={Units.Euro}
+                        />
                       </GradientTitle>
                     </Collapse>
                   )}

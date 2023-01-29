@@ -27,10 +27,10 @@
         "distance": "Please enter a valid whole number for the distance",
         "itemCount": "Please enter a valid whole number for the amount"
       },
-      "min": {
-        "value": "Cart value cannot be negative",
-        "distance": "Distance cannot be negative",
-        "itemCount": "Amount cannot be negative"
+      "positive": {
+        "value": "Cart value must be greater than 0",
+        "distance": "Distance must be greater than 0",
+        "itemCount": "Amount must be greater than 0"
       },
       "max": {
         "value": "Cart value exceeds the maximum value",
