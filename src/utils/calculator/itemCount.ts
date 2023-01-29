@@ -1,9 +1,4 @@
-import {
-  EXTRA_ITEM_FEE,
-  FREE_ITEM_LIMIT,
-  LARGE_ORDER_FEE,
-  LARGE_ORDER_LIMIT,
-} from '../../constants/calculator';
+import { EXTRA_ITEM_FEE, FREE_ITEM_LIMIT, LARGE_ORDER_FEE, LARGE_ORDER_LIMIT } from '../../constants/calculator';
 import { ItemCountSurchargeCalculatorProps } from '../../types/calculator';
 
 // Calculates an extra fee based on the count of items
@@ -19,9 +14,6 @@ export const calculateItemCountSurcharge = ({
   // Calculate charge for each extra item above the free limit
   const extraItemSurcharge = (itemCount - freeItemLimit) * extraItemFee;
   // Add the large order fee if the amount of items exceed the limit
-  const itemCountSurcharge =
-    itemCount >= largeOrderLimit
-      ? largeOrderFee + extraItemSurcharge
-      : extraItemSurcharge;
+  const itemCountSurcharge = itemCount >= largeOrderLimit ? largeOrderFee + extraItemSurcharge : extraItemSurcharge;
   return itemCountSurcharge;
 };

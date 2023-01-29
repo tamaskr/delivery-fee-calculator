@@ -1,15 +1,9 @@
-import {
-  InputAdornment,
-  Typography,
-  InputBaseComponentProps,
-  Collapse,
-  TextFieldProps,
-} from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { TransitionGroup } from 'react-transition-group';
+import { InputAdornment, Typography, InputBaseComponentProps, Collapse, TextFieldProps } from '@mui/material';
 import { Units } from '../constants/units';
 import { theme } from '../theme/default';
 import { InputContainer, InputField } from '../styles/input';
-import { TransitionGroup } from 'react-transition-group';
 
 type InputRowProps = {
   id?: string;
@@ -49,9 +43,7 @@ export const InputRow = ({
             InputProps={{
               inputProps,
               ...(unit && {
-                endAdornment: (
-                  <InputAdornment position="end">{unit}</InputAdornment>
-                ),
+                endAdornment: <InputAdornment position="end">{unit}</InputAdornment>,
               }),
             }}
             value={value}
@@ -64,11 +56,7 @@ export const InputRow = ({
       <TransitionGroup>
         {typeof error === 'string' && (
           <Collapse unmountOnExit>
-            <Typography
-              variant="body2"
-              textAlign="end"
-              color={theme.palette.error.dark}
-            >
+            <Typography variant="body2" textAlign="end" color={theme.palette.error.dark}>
               {t(error)}
             </Typography>
           </Collapse>

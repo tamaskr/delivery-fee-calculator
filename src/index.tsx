@@ -4,13 +4,11 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { theme } from './theme/default';
+import { MainLayout } from './styles/layout';
 import App from './App';
 import './i18n/i18n';
-import { MainLayout } from './styles/layout';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>

@@ -1,7 +1,4 @@
-import {
-  DELIVERY_FEE_CAP,
-  FREE_DELIVERY_TRESHOLD,
-} from '../../constants/calculator';
+import { DELIVERY_FEE_CAP, FREE_DELIVERY_TRESHOLD } from '../../constants/calculator';
 import { CalculatorProps } from '../../types/calculator';
 import { calculateDistanceSurcharge } from './distance';
 import { calculateItemCountSurcharge } from './itemCount';
@@ -26,8 +23,7 @@ export const calculateDeliveryFee = ({
   // Surcharge based on the amount of items
   const itemCountSurcharge = calculateItemCountSurcharge({ itemCount });
   // Temporary total fee including all possible surcharges
-  const partialFee =
-    smallOrderSurcharge + distanceSurcharge + itemCountSurcharge;
+  const partialFee = smallOrderSurcharge + distanceSurcharge + itemCountSurcharge;
   // Surcharge for rush hour delivery
   const totalFeeWithRushHourSurcharge = calculateRushHourSurcharge({
     currentFee: partialFee,
@@ -35,8 +31,6 @@ export const calculateDeliveryFee = ({
   });
   // The total delivery fee is capped before returning
   const cappedTotalFee =
-    totalFeeWithRushHourSurcharge > deliveryFeeCap
-      ? deliveryFeeCap
-      : totalFeeWithRushHourSurcharge;
+    totalFeeWithRushHourSurcharge > deliveryFeeCap ? deliveryFeeCap : totalFeeWithRushHourSurcharge;
   return cappedTotalFee.toFixed(2);
 };

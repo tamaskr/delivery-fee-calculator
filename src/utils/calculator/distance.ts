@@ -21,9 +21,6 @@ export const calculateDistanceSurcharge = ({
   // Check if the distance is over the initial distance
   const additionalDistance = distance - initialDistance;
   // Calculate charge for the initial distance
-  const additionalCharge =
-    additionalDistance > 0
-      ? Math.ceil(additionalDistance / additionalDistanceSteps)
-      : 0;
+  const additionalCharge = additionalDistance > 0 ? Math.ceil(additionalDistance / additionalDistanceSteps) : 0;
   return initialFee + additionalCharge * additionalFee;
 };

@@ -10,13 +10,7 @@ import { theme } from './theme/default';
 import { numberValidator, validateCurrency } from './utils/validation';
 import { Units } from './constants/units';
 import { InputRow } from './components/InputRow';
-import {
-  GradientTitle,
-  InputField,
-  ContentContainer,
-  PrimaryButton,
-  TextButton,
-} from './styles';
+import { GradientTitle, InputField, ContentContainer, PrimaryButton, TextButton } from './styles';
 import { calculateDeliveryFee } from './utils/calculator';
 import { FormValues } from './types/form';
 
@@ -31,16 +25,11 @@ const validationSchema = yup.object({
   value: numberValidator('value')
     .max(100000, 'form.errors.max.value')
     .test('currency', 'form.errors.currency', validateCurrency),
-  distance: numberValidator('distance')
-    .max(50000, 'form.errors.max.distance')
-    .integer('form.errors.integer.distance'),
+  distance: numberValidator('distance').max(50000, 'form.errors.max.distance').integer('form.errors.integer.distance'),
   itemCount: numberValidator('itemCount')
     .max(500, 'form.errors.max.itemCount')
     .integer('form.errors.integer.itemCount'),
-  time: yup
-    .date()
-    .typeError('form.errors.typeError.time')
-    .required('form.errors.required.time'),
+  time: yup.date().typeError('form.errors.typeError.time').required('form.errors.required.time'),
 });
 
 const App = () => {
@@ -65,22 +54,8 @@ const App = () => {
           <GradientTitle variant="h3" fontWeight="bold" textAlign="center">
             {t('general.title')}
           </GradientTitle>
-          <Formik
-            initialValues={initialFormValues}
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              isValid,
-              dirty,
-              handleChange,
-              handleReset,
-              handleBlur,
-              setFieldValue,
-            }) => (
+          <Formik initialValues={initialFormValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+            {({ values, errors, touched, isValid, dirty, handleChange, handleReset, handleBlur, setFieldValue }) => (
               <Form autoComplete="off">
                 {/* Input for order value */}
                 <InputRow
@@ -118,24 +93,15 @@ const App = () => {
                   onBlur={handleBlur}
                 />
                 {/* Custom date and time picker input for order time */}
-                <InputRow
-                  title="general.time"
-                  error={touched.time && (errors.time as string)}
-                >
+                <InputRow title="general.time" error={touched.time && (errors.time as string)}>
                   <DateTimePicker
                     value={values.time}
                     ampmInClock
                     onChange={(value) => setFieldValue('time', value, true)}
-                    renderInput={(params: TextFieldProps) => (
-                      <InputField id="time" onBlur={handleBlur} {...params} />
-                    )}
+                    renderInput={(params: TextFieldProps) => <InputField id="time" onBlur={handleBlur} {...params} />}
                   />
                 </InputRow>
-                <PrimaryButton
-                  type="submit"
-                  disabled={!(isValid && dirty)}
-                  sx={{ marginTop: theme.spacing(3) }}
-                >
+                <PrimaryButton type="submit" disabled={!(isValid && dirty)} sx={{ marginTop: theme.spacing(3) }}>
                   {t('general.calculate')}
                 </PrimaryButton>
                 <TransitionGroup>
@@ -152,18 +118,10 @@ const App = () => {
                       >
                         {t('general.reset')}
                       </TextButton>
-                      <Typography
-                        variant="h6"
-                        textAlign="center"
-                        sx={{ marginTop: theme.spacing(2) }}
-                      >
+                      <Typography variant="h6" textAlign="center" sx={{ marginTop: theme.spacing(2) }}>
                         {t('general.deliveryFeeTitle')}
                       </Typography>
-                      <GradientTitle
-                        variant="h3"
-                        fontWeight="bold"
-                        textAlign="center"
-                      >
+                      <GradientTitle variant="h3" fontWeight="bold" textAlign="center">
                         <CountUp
                           start={0}
                           end={Number(deliveryFee)}
