@@ -33,6 +33,7 @@ export const RUSH_HOUR_MULTIPLIER = 1.2;
 export const RUSH_HOURS: RushHourPeriod[] = [
   {
     day: Days.Friday,
+    // Only valid HH:mm time format can be used
     from: '15:00',
     to: '19:00',
   },

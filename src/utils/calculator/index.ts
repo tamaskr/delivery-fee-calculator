@@ -17,7 +17,7 @@ export const calculateDeliveryFee = ({
   freeDeliveryTreshold = FREE_DELIVERY_TRESHOLD,
   deliveryFeeCap = DELIVERY_FEE_CAP,
 }: CalculatorProps): string => {
-  // Regardless of other values, delivery is free if the order value exceeds the free delivery treshold
+  // Delivery is free if the order value exceeds the free delivery treshold (regardless of other values)
   if (orderValue >= freeDeliveryTreshold) return '0';
   // Surcharge for small orders
   const smallOrderSurcharge = calculateSmallOrderSurcharge({ orderValue });
@@ -33,7 +33,7 @@ export const calculateDeliveryFee = ({
     currentFee: partialFee,
     time,
   });
-  // The total delivery fee should never exceed the capped value
+  // The total delivery fee is capped before returning
   const cappedTotalFee =
     totalFeeWithRushHourSurcharge > deliveryFeeCap
       ? deliveryFeeCap
