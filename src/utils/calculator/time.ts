@@ -4,7 +4,7 @@ import { RUSH_HOURS, RUSH_HOUR_MULTIPLIER } from '../../constants/calculator';
 import { RushHourSurchargeCalculatorProps } from '../../types/calculator';
 
 // Checks if the given rush hour periods are in valid format
-const checkRushHourPeriodValidity = (rushHourPeriods: RushHourPeriod[]): boolean => {
+export const checkRushHourPeriodValidity = (rushHourPeriods: RushHourPeriod[]): boolean => {
   // Map out all the supposed HH:mm values from rush hour periods
   const rushHourPeriodValidity = rushHourPeriods.map(
     (rushHour) => moment(rushHour.from, 'HH:mm', true).isValid() && moment(rushHour.to, 'HH:mm', true).isValid()
