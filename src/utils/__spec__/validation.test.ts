@@ -9,6 +9,12 @@ describe('numberValidator', () => {
     await expect(validator.validate(validNumber)).resolves.toEqual(validNumber);
   });
 
+  test('Validates a positive decimal point number', async () => {
+    const validNumber = 1.5;
+    const validator = numberValidator(LABEL_TEST);
+    await expect(validator.validate(validNumber)).resolves.toEqual(validNumber);
+  });
+
   test('Fails validation for a negative number', async () => {
     const invalidNumber = -1;
     const validator = numberValidator(LABEL_TEST);
@@ -49,7 +55,7 @@ describe('validateCurrency', () => {
     expect(result).toBe(false);
   });
 
-  test('Returns false for a valid whole currency', () => {
+  test('Returns false for an invalid negative currency', () => {
     const result = validateCurrency(-1);
     expect(result).toBe(false);
   });
