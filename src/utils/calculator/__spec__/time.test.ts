@@ -21,22 +21,22 @@ const VALID_RUSH_HOUR_PERIODS_TEST: RushHourPeriod[] = [
 ];
 
 describe('calculateRushHourSurcharge', () => {
-  test('Returns the current fee with multiplier for time in rush hour', () => {
+  test('Returns the current fee with multiplier for time in UTC rush hour', () => {
     const result = calculateRushHourSurcharge({
       currentFee: CURRENT_FEE_TEST,
       // Friday 14:59:59 UTC time
-      time: new Date(2023, 0, 27, 16, 59, 59),
+      time: new Date('2023-01-27T16:59:99.999+02:00'),
       rushHourPeriods: VALID_RUSH_HOUR_PERIODS_TEST,
       multiplier: RUSH_HOUR_MULTIPLIER_TEST,
     });
     expect(result).toBe(CURRENT_FEE_TEST);
   });
 
-  test('Returns the current fee (without multiplier) for time outside of rush hour', () => {
+  test('Returns the current fee (without multiplier) for time outside of UTC rush hour', () => {
     const result = calculateRushHourSurcharge({
       currentFee: CURRENT_FEE_TEST,
       // Friday 15:00:00 UTC time
-      time: new Date(2023, 0, 27, 18),
+      time: new Date('2023-01-27T17:00:00.000+02:00'),
       rushHourPeriods: VALID_RUSH_HOUR_PERIODS_TEST,
       multiplier: RUSH_HOUR_MULTIPLIER_TEST,
     });

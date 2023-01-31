@@ -20,26 +20,37 @@ describe('numberValidator', () => {
     const validator = numberValidator(LABEL_TEST);
     await expect(validator.validate(invalidValue)).rejects.toThrow(`form.errors.typeError.${LABEL_TEST}`);
   });
+
+  test('Fails validation for undefined value', async () => {
+    const invalidValue = undefined;
+    const validator = numberValidator(LABEL_TEST);
+    await expect(validator.validate(invalidValue)).rejects.toThrow(`form.errors.required.${LABEL_TEST}`);
+  });
 });
 
 describe('validateCurrency', () => {
-  test('Return true for a valid currency with dot separator', () => {
+  test('Returns true for a valid currency with dot separator', () => {
     const result = validateCurrency(1.55);
     expect(result).toBe(true);
   });
 
-  test('Return true for a valid currency with one decimal', () => {
+  test('Returns true for a valid currency with one decimal', () => {
     const result = validateCurrency(1.5);
     expect(result).toBe(true);
   });
 
-  test('Return true for a valid whole currency', () => {
+  test('Returns true for a valid whole currency', () => {
     const result = validateCurrency(1);
     expect(result).toBe(true);
   });
 
-  test('Return false for for an invalid currency with three decimals', () => {
+  test('Returns false for for an invalid currency with three decimals', () => {
     const result = validateCurrency(1.555);
+    expect(result).toBe(false);
+  });
+
+  test('Returns false for a valid whole currency', () => {
+    const result = validateCurrency(-1);
     expect(result).toBe(false);
   });
 });
