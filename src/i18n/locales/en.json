@@ -1,7 +1,7 @@
 {
   "general": {
     "title": "Delivery Fee Calculator",
-    "value": "Cart value",
+    "cartValue": "Cart value",
     "distance": "Delivery distance",
     "itemCount": "Amount of items",
     "time": "Time",
@@ -12,13 +12,13 @@
   "form": {
     "errors": {
       "required": {
-        "value": "Please enter a valid cart value",
+        "cartValue": "Please enter a valid cart value",
         "distance": "Please enter a valid distance",
         "itemCount": "Please enter a valid amount",
         "time": "Please set a valid time"
       },
       "typeError": {
-        "value": "Please enter a valid numerical value for the cart.",
+        "cartValue": "Please enter a valid numerical value for the cart.",
         "distance": "Please enter a valid numerical value for the distance.",
         "itemCount": "Please enter a valid numerical value for the amount of items",
         "time": "Please set a valid time"
@@ -28,12 +28,12 @@
         "itemCount": "Please enter a whole number for the amount"
       },
       "positive": {
-        "value": "Cart value must be greater than 0",
+        "cartValue": "Cart value must be greater than 0",
         "distance": "Distance must be greater than 0",
         "itemCount": "Amount must be greater than 0"
       },
       "max": {
-        "value": "Cart value exceeds the maximum value",
+        "cartValue": "Cart value exceeds the maximum value",
         "distance": "Distance exceeds the maximum value",
         "itemCount": "Amount exceeds the maximum value"
       },

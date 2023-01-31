@@ -1,5 +1,5 @@
 export type FormValues = {
-  value: string;
+  cartValue: string;
   distance: string;
   itemCount: string;
   time: Date;

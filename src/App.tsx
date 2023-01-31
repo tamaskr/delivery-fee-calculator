@@ -15,15 +15,15 @@ import { calculateDeliveryFee } from './utils/calculator';
 import { FormValues } from './types/form';
 
 const initialFormValues: FormValues = {
-  value: '',
+  cartValue: '',
   distance: '',
   itemCount: '',
   time: new Date(),
 };
 
 const validationSchema = yup.object({
-  value: numberValidator('value')
-    .max(100000, 'form.errors.max.value')
+  cartValue: numberValidator('cartValue')
+    .max(100000, 'form.errors.max.cartValue')
     .test('currency', 'form.errors.currency', validateCurrency),
   distance: numberValidator('distance').max(50000, 'form.errors.max.distance').integer('form.errors.integer.distance'),
   itemCount: numberValidator('itemCount')
@@ -38,9 +38,9 @@ const App = () => {
   const [deliveryFee, setDeliveryFee] = useState<string | null>();
 
   // Calculate the delivery fee after submitting the form
-  const onSubmit = ({ value, distance, itemCount, time }: FormValues) => {
+  const onSubmit = ({ cartValue, distance, itemCount, time }: FormValues) => {
     const deliveryFee = calculateDeliveryFee({
-      orderValue: Number(value),
+      orderValue: Number(cartValue),
       distance: Number(distance),
       itemCount: Number(itemCount),
       time,
@@ -60,12 +60,12 @@ const App = () => {
               <Form autoComplete="off">
                 {/* Input for order value */}
                 <InputRow
-                  id="value"
+                  id="cartValue"
                   type="number"
-                  title="general.value"
+                  title="general.cartValue"
                   unit={Units.Euro}
-                  value={values.value}
-                  error={touched.value && errors.value}
+                  value={values.cartValue}
+                  error={touched.cartValue && errors.cartValue}
                   inputProps={{ inputMode: 'numeric' }}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -98,7 +98,7 @@ const App = () => {
                   <DateTimePicker
                     value={values.time}
                     ampmInClock
-                    onChange={(value) => setFieldValue('time', value, true)}
+                    onChange={(cartValue) => setFieldValue('time', cartValue, true)}
                     renderInput={(params: TextFieldProps) => <InputField id="time" onBlur={handleBlur} {...params} />}
                   />
                 </InputRow>
