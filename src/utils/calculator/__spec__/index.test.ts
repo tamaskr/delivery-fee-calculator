@@ -3,6 +3,7 @@ import {
   FREE_DELIVERY_TRESHOLD,
   FREE_ITEM_LIMIT,
   INITIAL_DISTANCE,
+  LARGE_ORDER_LIMIT,
 } from '../../../constants/calculator';
 import { calculateDeliveryFee } from './../index';
 
@@ -22,11 +23,11 @@ describe('calculateDeliveryFee', () => {
   test('Caps the maximum delivery fee', () => {
     const result = calculateDeliveryFee({
       orderValue: FREE_DELIVERY_TRESHOLD - 1,
-      distance: INITIAL_DISTANCE + ADDITIONAL_DISTANCE_FEE * 1000,
-      itemCount: 1000,
+      distance: INITIAL_DISTANCE + ADDITIONAL_DISTANCE_FEE * 2,
+      itemCount: LARGE_ORDER_LIMIT * 2,
       time: DATE_TEST,
-      deliveryFeeCap: 1,
+      deliveryFeeCap: 0.01,
     });
-    expect(result).toBe('1.00');
+    expect(result).toBe('0.01');
   });
 });
