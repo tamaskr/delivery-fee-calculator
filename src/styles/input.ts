@@ -13,13 +13,16 @@ export const InputField = styled(TextField)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     width: '100%',
+    '& input': {
+      paddingRight: theme.spacing(2),
+    },
   },
 }));
 
 export const InputContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
-  padding: `${theme.spacing(1.5)} 0 ${theme.spacing(0.5)} 0`,
+  padding: `${theme.spacing(1)} 0`,
   justifyContent: 'space-between',
   alignItems: 'center',
   [theme.breakpoints.down('md')]: {

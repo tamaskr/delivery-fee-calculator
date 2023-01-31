@@ -102,7 +102,7 @@ const App = () => {
                     renderInput={(params: TextFieldProps) => <InputField id="time" onBlur={handleBlur} {...params} />}
                   />
                 </InputRow>
-                <PrimaryButton type="submit" disabled={!(isValid && dirty)} sx={{ marginTop: theme.spacing(3) }}>
+                <PrimaryButton type="submit" disabled={!(isValid && dirty)} sx={{ marginTop: theme.spacing(1.5) }}>
                   {t('general.calculate')}
                 </PrimaryButton>
                 <TransitionGroup>
