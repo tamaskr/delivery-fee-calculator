@@ -17,7 +17,7 @@ describe('calculateDeliveryFee', () => {
       itemCount: FREE_ITEM_LIMIT,
       time: DATE_TEST,
     });
-    expect(result).toBe('0');
+    expect(result).toBe(0);
   });
 
   test('Caps the maximum delivery fee', () => {
@@ -28,6 +28,6 @@ describe('calculateDeliveryFee', () => {
       time: DATE_TEST,
       deliveryFeeCap: 0.01,
     });
-    expect(result).toBe('0.01');
+    expect(result).toBe(0.01);
   });
 });

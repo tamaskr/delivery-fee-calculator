@@ -35,7 +35,7 @@ const validationSchema = yup.object({
 const App = () => {
   const { t } = useTranslation();
 
-  const [deliveryFee, setDeliveryFee] = useState<string | null>();
+  const [deliveryFee, setDeliveryFee] = useState<number | null>();
 
   // Calculate the delivery fee after submitting the form
   const onSubmit = ({ cartValue, distance, itemCount, time }: FormValues) => {
@@ -106,7 +106,8 @@ const App = () => {
                   {t('general.calculate')}
                 </PrimaryButton>
                 <TransitionGroup>
-                  {deliveryFee && (
+                  {/* The calculated delivery fee can also be 0, which would be falsy -> type check is preferred */}
+                  {typeof deliveryFee === 'number' && (
                     <Collapse unmountOnExit>
                       <TextButton
                         size="small"
@@ -125,7 +126,7 @@ const App = () => {
                       <GradientTitle variant="h3" fontWeight="bold" textAlign="center">
                         <CountUp
                           start={0}
-                          end={Number(deliveryFee)}
+                          end={deliveryFee}
                           duration={0.5}
                           separator=" "
                           decimals={2}
