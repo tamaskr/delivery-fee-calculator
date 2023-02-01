@@ -37,6 +37,8 @@ const App = () => {
   const { t } = useTranslation();
   // Calculated delivery fee
   const [deliveryFee, setDeliveryFee] = useState<number | null>();
+  // Control date & time picker visibility
+  const [datePickerOpen, setDatePickerOpen] = useState<boolean>(false);
 
   // Calculate the delivery fee after submitting the form
   const onSubmit = ({ cartValue, distance, itemCount, time }: FormValues) => {
@@ -98,9 +100,20 @@ const App = () => {
                 <InputRow title="general.time" error={touched.time && (errors.time as string)}>
                   <DateTimePicker
                     value={values.time}
-                    ampmInClock
+                    open={datePickerOpen}
+                    onOpen={() => setDatePickerOpen(true)}
+                    onClose={() => setDatePickerOpen(false)}
+                    inputFormat="yyyy.MM.dd. hh:mm a"
                     onChange={(cartValue) => setFieldValue('time', cartValue, true)}
-                    renderInput={(params: TextFieldProps) => <InputField id="time" onBlur={handleBlur} {...params} />}
+                    renderInput={(params: TextFieldProps) => (
+                      <InputField
+                        id="time"
+                        onBlur={handleBlur}
+                        onClick={() => setDatePickerOpen(true)}
+                        {...params}
+                        inputProps={{ ...params.inputProps, readOnly: true, style: { cursor: 'pointer' } }}
+                      />
+                    )}
                   />
                 </InputRow>
                 <PrimaryButton type="submit" disabled={!(isValid && dirty)} sx={{ marginTop: theme.spacing(1.5) }}>
