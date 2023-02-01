@@ -18,4 +18,21 @@ export const theme = createTheme({
       textTransform: 'none',
     },
   },
+  components: {
+    MuiPopper: {
+      defaultProps: {
+        sx: (theme) => ({
+          '& .MuiClock-pmButton, & .MuiClock-amButton': {
+            height: theme.spacing(4.5),
+            width: theme.spacing(4.5),
+            '& .MuiTypography-root': {
+              backgroundColor: theme.palette.background.default,
+              borderRadius: theme.spacing(10),
+              padding: theme.spacing(0.7)
+            },
+          }
+        })
+      }
+    },
+  },
 });
