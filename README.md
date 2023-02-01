@@ -1,6 +1,7 @@
 # Delivery Fee Calculator 🚗 🍕
 
-Frontend solution for Wolt's 2023 summer engineering intern position assignment. Thank you to Wolt's team for the challenge!
+Frontend solution for Wolt's 2023 summer engineering intern position assignment.
+Thank you to Wolt's team for the challenge!
 
 ## Installation
 
@@ -28,8 +29,7 @@ Frontend solution for Wolt's 2023 summer engineering intern position assignment.
 
 ## Testing
 
-There are unit test available for the delivery fee calculations, which can be run with the command below.
-Tests were written with the help of [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/)
+There are unit tests available for the delivery fee calculations and for components. The tests can can be run with the command below.
 
 ```bash
 npm test
