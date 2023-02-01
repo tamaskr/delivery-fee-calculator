@@ -108,7 +108,7 @@ const App = () => {
                     renderInput={(params: TextFieldProps) => (
                       <InputField
                         id="time"
-                        onBlur={handleBlur}
+                        focused={datePickerOpen}
                         onClick={() => setDatePickerOpen(true)}
                         {...params}
                         inputProps={{ ...params.inputProps, readOnly: true, style: { cursor: 'pointer' } }}
