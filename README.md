@@ -29,7 +29,7 @@ Thank you to Wolt's team for the challenge!
 
 ## Testing
 
-There are unit tests available for the delivery fee calculations and for components. The tests can can be run with the command below.
+There are unit tests available for the delivery fee calculations and for components. The tests can be run with the command below
 
 ```bash
 npm test
