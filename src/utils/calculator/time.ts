@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { RushHourPeriod } from './../../types/calculator';
+import { RushHourPeriod } from '../../types/calculator';
 import { RUSH_HOURS, RUSH_HOUR_MULTIPLIER } from '../../constants/calculator';
 import { RushHourSurchargeCalculatorProps } from '../../types/calculator';
 

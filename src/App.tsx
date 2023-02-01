@@ -21,6 +21,7 @@ const initialFormValues: FormValues = {
   time: new Date(),
 };
 
+// Validation schema for delivery fee calculator form inputs
 const validationSchema = yup.object({
   cartValue: numberValidator('cartValue')
     .max(100000, 'form.errors.max.cartValue')
@@ -34,7 +35,7 @@ const validationSchema = yup.object({
 
 const App = () => {
   const { t } = useTranslation();
-
+  // Calculated delivery fee
   const [deliveryFee, setDeliveryFee] = useState<number | null>();
 
   // Calculate the delivery fee after submitting the form
@@ -58,7 +59,7 @@ const App = () => {
           <Formik initialValues={initialFormValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             {({ values, errors, touched, isValid, dirty, handleChange, handleReset, handleBlur, setFieldValue }) => (
               <Form autoComplete="off">
-                {/* Input for order value */}
+                {/* Input for cart value */}
                 <InputRow
                   id="cartValue"
                   type="number"
@@ -93,7 +94,7 @@ const App = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* Custom date and time picker input for order time */}
+                {/* Custom date and time picker input for time input */}
                 <InputRow title="general.time" error={touched.time && (errors.time as string)}>
                   <DateTimePicker
                     value={values.time}
@@ -106,7 +107,7 @@ const App = () => {
                   {t('general.calculate')}
                 </PrimaryButton>
                 <TransitionGroup>
-                  {/* The calculated delivery fee can also be 0, which would be falsy -> type check is preferred */}
+                  {/* The calculated delivery fee can also be 0, which is falsy -> type check is preferred */}
                   {typeof deliveryFee === 'number' && (
                     <Collapse unmountOnExit>
                       <TextButton
