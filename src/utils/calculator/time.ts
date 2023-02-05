@@ -3,11 +3,14 @@ import { RushHourPeriod } from '../../types/calculator';
 import { RUSH_HOURS, RUSH_HOUR_MULTIPLIER } from '../../constants/calculator';
 import { RushHourSurchargeCalculatorProps } from '../../types/calculator';
 
+const VALID_TIME_FORMAT = 'HH:mm';
+
 // Checks if the given rush hour periods are in valid format
 export const checkRushHourPeriodValidity = (rushHourPeriods: RushHourPeriod[]): boolean => {
   // Map out all the supposed HH:mm values from rush hour periods
   const rushHourPeriodValidity = rushHourPeriods.map(
-    (rushHour) => moment(rushHour.from, 'HH:mm', true).isValid() && moment(rushHour.to, 'HH:mm', true).isValid()
+    (rushHour) =>
+      moment(rushHour.from, VALID_TIME_FORMAT, true).isValid() && moment(rushHour.to, VALID_TIME_FORMAT, true).isValid()
   );
   // Return false if invalid values are passed to rush hour periods
   if (rushHourPeriodValidity.includes(false)) {
@@ -31,16 +34,16 @@ export const calculateRushHourSurcharge = ({
   if (!areAllRushHourPeriodsValid) return currentFee;
   // Format the given time to UTC time zone
   const timeInUTC = moment.utc(time);
-  // Get the UTC day of the week
+  // Get UTC day of the week
   const dayOfTheWeekInUTC = timeInUTC.day();
-  // Convert the UTC time to HH:mm format
-  const hoursAndMinutesInUTC = timeInUTC.format('HH:mm');
-  // Check if the UTC time is in any of the rush hour periods
+  // Convert UTC time to HH:mm format
+  const hoursAndMinutesInUTC = timeInUTC.format(VALID_TIME_FORMAT);
+  // Check if the converted UTC time is in any of the rush hour periods
   const isRushHour = rushHourPeriods
     .map((rushHour: RushHourPeriod) => {
       // Check if the day of the week matches
       const isSameDay = dayOfTheWeekInUTC === rushHour.day;
-      // Check if the UTC time is in the rush hour's time period
+      // Check if the given UTC time is in the rush hour's time period
       const isInTimePeriod = hoursAndMinutesInUTC >= rushHour.from && hoursAndMinutesInUTC <= rushHour.to;
       // Return true if both the day and the time period matches
       return isSameDay && isInTimePeriod;

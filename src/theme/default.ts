@@ -28,11 +28,11 @@ export const theme = createTheme({
             '& .MuiTypography-root': {
               backgroundColor: theme.palette.background.default,
               borderRadius: theme.spacing(10),
-              padding: theme.spacing(0.7)
+              padding: theme.spacing(0.7),
             },
-          }
-        })
-      }
+          },
+        }),
+      },
     },
   },
 });

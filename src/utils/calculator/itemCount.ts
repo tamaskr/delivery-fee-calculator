@@ -1,7 +1,7 @@
 import { EXTRA_ITEM_FEE, FREE_ITEM_LIMIT, LARGE_ORDER_FEE, LARGE_ORDER_LIMIT } from '../../constants/calculator';
 import { ItemCountSurchargeCalculatorProps } from '../../types/calculator';
 
-// Calculates an extra fee based on the count of items
+// Calculates an extra surcharge based on the count of items
 export const calculateItemCountSurcharge = ({
   itemCount,
   freeItemLimit = FREE_ITEM_LIMIT,
