@@ -26,9 +26,9 @@ const validationSchema = yup.object({
   cartValue: numberValidator('cartValue')
     .max(100000, 'form.errors.max.cartValue')
     .test('currency', 'form.errors.currency', validateCurrency),
-  distance: numberValidator('distance').max(50000, 'form.errors.max.distance').integer('form.errors.integer.distance'),
+  distance: numberValidator('distance').max(100000, 'form.errors.max.distance').integer('form.errors.integer.distance'),
   itemCount: numberValidator('itemCount')
-    .max(500, 'form.errors.max.itemCount')
+    .max(1000, 'form.errors.max.itemCount')
     .integer('form.errors.integer.itemCount'),
   time: yup.date().typeError('form.errors.typeError.time').required('form.errors.required.time'),
 });
