@@ -113,6 +113,7 @@ const App = () => {
                         onClick={() => setDatePickerOpen(true)}
                         {...params}
                         inputProps={{ ...params.inputProps, readOnly: true, style: { cursor: 'pointer' } }}
+                        InputProps={{ ...params.InputProps, style: { cursor: 'pointer' } }}
                       />
                     )}
                   />
