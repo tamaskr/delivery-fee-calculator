@@ -37,10 +37,10 @@ const App = () => {
   const { t } = useTranslation();
   // Calculated delivery fee
   const [deliveryFee, setDeliveryFee] = useState<number | null>();
-  // State for controlling date & time picker visibility
+  // State for controlling date picker visibility
   const [datePickerOpen, setDatePickerOpen] = useState<boolean>(false);
 
-  // Calculate the delivery fee after submitting the form
+  // Calculate delivery fee after submitting the form
   const onSubmit = ({ cartValue, distance, itemCount, time }: FormValues) => {
     const deliveryFee = calculateDeliveryFee({
       orderValue: Number(cartValue),
@@ -52,7 +52,7 @@ const App = () => {
   };
 
   // Formatting for date input
-  const dateFormat = 'yyyy.MM.dd. hh:mm a';
+  const dateFormat = 'yyyy-MM-dd hh:mm a';
 
   return (
     <TransitionGroup>
