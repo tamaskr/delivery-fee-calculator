@@ -1,6 +1,6 @@
 import {
   ADDITIONAL_DISTANCE_FEE,
-  FREE_DELIVERY_TRESHOLD,
+  FREE_DELIVERY_THRESHOLD,
   FREE_ITEM_LIMIT,
   INITIAL_DISTANCE,
   LARGE_ORDER_LIMIT,
@@ -11,9 +11,9 @@ const DATE_TEST = new Date('2023-01-27T00:00:00.000+02:00');
 const DELIVERY_FEE_CAP_TEST = 0.01;
 
 describe('calculateDeliveryFee', () => {
-  test('Returns 0 when cart value reaches the free delivery treshold', () => {
+  test('Returns 0 when cart value reaches the free delivery threshold', () => {
     const result = calculateDeliveryFee({
-      orderValue: FREE_DELIVERY_TRESHOLD,
+      orderValue: FREE_DELIVERY_THRESHOLD,
       distance: INITIAL_DISTANCE,
       itemCount: FREE_ITEM_LIMIT,
       time: DATE_TEST,
@@ -23,7 +23,7 @@ describe('calculateDeliveryFee', () => {
 
   test('Caps the maximum delivery fee', () => {
     const result = calculateDeliveryFee({
-      orderValue: FREE_DELIVERY_TRESHOLD - 1,
+      orderValue: FREE_DELIVERY_THRESHOLD - 1,
       distance: INITIAL_DISTANCE + ADDITIONAL_DISTANCE_FEE * 2,
       itemCount: LARGE_ORDER_LIMIT * 2,
       time: DATE_TEST,

@@ -5,7 +5,7 @@ export type CalculatorProps = {
   distance: number;
   itemCount: number;
   time: Date;
-  freeDeliveryTreshold?: number;
+  freeDeliveryThreshold?: number;
   deliveryFeeCap?: number;
 };
 

@@ -6,7 +6,7 @@ import {
 } from '../../constants/calculator';
 import { DistanceSurchargeCalculatorProps } from '../../types/calculator';
 
-// Calculates the distance surcharge based on the initial fee and additional fee if applicable
+// Calculates distance surcharge based on initial fee and additional fee if applicable
 export const calculateDistanceSurcharge = ({
   distance,
   initialDistance = INITIAL_DISTANCE,
@@ -14,9 +14,9 @@ export const calculateDistanceSurcharge = ({
   additionalDistanceSteps = ADDITIONAL_DISTANCE_STEP,
   additionalFee = ADDITIONAL_DISTANCE_FEE,
 }: DistanceSurchargeCalculatorProps): number => {
-  // Check if the distance is over the initial distance
+  // Check if distance exceeds initial distance
   const additionalDistance = distance - initialDistance;
-  // Calculate charge for the additional distance
+  // Calculate charge for additional distance
   const additionalCharge = additionalDistance > 0 ? Math.ceil(additionalDistance / additionalDistanceSteps) : 0;
   return initialFee + additionalCharge * additionalFee;
 };

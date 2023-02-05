@@ -1,6 +1,6 @@
 import { Days } from '../../../constants/days';
 import { RushHourPeriod } from '../../../types/calculator';
-import { calculateRushHourSurcharge, checkRushHourPeriodValidity } from '../time';
+import { calculateRushHourSurcharge, validateRushHourPeriods } from '../time';
 
 const CURRENT_FEE_TEST = 10;
 const RUSH_HOUR_MULTIPLIER_TEST = 1.2;
@@ -44,15 +44,15 @@ describe('calculateRushHourSurcharge', () => {
   });
 });
 
-describe('checkRushHourPeriodValidity', () => {
+describe('validateRushHourPeriods', () => {
   test('Returns true if valid rush hour period is passed', () => {
-    const result = checkRushHourPeriodValidity(VALID_RUSH_HOUR_PERIODS_TEST);
+    const result = validateRushHourPeriods(VALID_RUSH_HOUR_PERIODS_TEST);
     expect(result).toBe(true);
   });
 
   test('Throws error if invalid rush hour period is passed', () => {
     console.error = jest.fn();
-    checkRushHourPeriodValidity(INVALID_RUSH_HOUR_PERIODS_TEST);
+    validateRushHourPeriods(INVALID_RUSH_HOUR_PERIODS_TEST);
     expect(console.error).toHaveBeenCalledWith('Invalid rush hour period provided');
   });
 });

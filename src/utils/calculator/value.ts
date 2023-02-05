@@ -1,13 +1,13 @@
 import { SmallOrderSurchargeCalculatorProps } from '../../types/calculator';
 import { SMALL_ORDER_LIMIT } from '../../constants/calculator';
 
-// Calculates an extra surcharge for small orders below the limit
+// Calculates surcharge for small orders below the limit
 export const calculateSmallOrderSurcharge = ({
   orderValue,
   smallOrderLimit = SMALL_ORDER_LIMIT,
 }: SmallOrderSurchargeCalculatorProps): number => {
-  // No surcharge is added for values that reach the minimum limit
+  // No surcharge if order value meets minimum limit.
   if (orderValue >= smallOrderLimit) return 0;
-  // If the order value is smaller than the limit, deduct the order value from the minimum value
+  // Calculate surcharge by subtracting order value from minimum value if it's below the limit
   return smallOrderLimit - orderValue;
 };
