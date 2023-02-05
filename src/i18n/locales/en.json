@@ -18,7 +18,7 @@
         "time": "Please set a valid time"
       },
       "typeError": {
-        "cartValue": "Please enter a valid numerical value for the cart.",
+        "cartValue": "Please enter a valid numerical value for the cart value",
         "distance": "Please enter a valid numerical value for the distance.",
         "itemCount": "Please enter a valid numerical value for the amount of items",
         "time": "Please set a valid time"
@@ -30,12 +30,12 @@
       "positive": {
         "cartValue": "Cart value must be greater than 0",
         "distance": "Distance must be greater than 0",
-        "itemCount": "Amount must be greater than 0"
+        "itemCount": "Amount of items must be greater than 0"
       },
       "max": {
         "cartValue": "Cart value exceeds the maximum value",
         "distance": "Distance exceeds the maximum value",
-        "itemCount": "Amount exceeds the maximum value"
+        "itemCount": "Amount of items exceed the maximum value"
       },
       "currency": "Please enter a valid currency"
     }
