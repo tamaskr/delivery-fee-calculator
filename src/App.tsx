@@ -37,7 +37,7 @@ const App = () => {
   const { t } = useTranslation();
   // Calculated delivery fee
   const [deliveryFee, setDeliveryFee] = useState<number | null>();
-  // Control date & time picker visibility
+  // State for controlling date & time picker visibility
   const [datePickerOpen, setDatePickerOpen] = useState<boolean>(false);
 
   // Calculate the delivery fee after submitting the form
@@ -72,7 +72,7 @@ const App = () => {
                   unit={Units.Euro}
                   value={values.cartValue}
                   error={touched.cartValue && errors.cartValue}
-                  inputProps={{ inputMode: 'numeric' }}
+                  inputProps={{ inputMode: 'decimal' }}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
@@ -84,7 +84,6 @@ const App = () => {
                   unit={Units.Meter}
                   value={values.distance}
                   error={touched.distance && errors.distance}
-                  inputProps={{ inputMode: 'numeric' }}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
@@ -95,7 +94,6 @@ const App = () => {
                   title="general.itemCount"
                   value={values.itemCount}
                   error={touched.itemCount && errors.itemCount}
-                  inputProps={{ inputMode: 'numeric' }}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />

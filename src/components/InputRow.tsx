@@ -41,10 +41,11 @@ export const InputRow = ({
             id={id}
             type={type ?? 'text'}
             InputProps={{
-              inputProps,
+              ...(type === 'number' && { inputMode: 'numeric' }),
               ...(unit && {
                 endAdornment: <InputAdornment position="end">{unit}</InputAdornment>,
               }),
+              inputProps,
             }}
             value={value}
             onChange={onChange}
