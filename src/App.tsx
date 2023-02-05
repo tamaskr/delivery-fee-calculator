@@ -51,6 +51,9 @@ const App = () => {
     setDeliveryFee(deliveryFee);
   };
 
+  // Formatting for date input
+  const dateFormat = 'yyyy.MM.dd. hh:mm a';
+
   return (
     <TransitionGroup>
       <Grow timeout={1000}>
@@ -103,8 +106,8 @@ const App = () => {
                     open={datePickerOpen}
                     onOpen={() => setDatePickerOpen(true)}
                     onClose={() => setDatePickerOpen(false)}
-                    inputFormat="yyyy.MM.dd. hh:mm a"
-                    onChange={(cartValue) => setFieldValue('time', cartValue, true)}
+                    inputFormat={dateFormat}
+                    onChange={(time) => setFieldValue('time', time, true)}
                     renderInput={(params: TextFieldProps) => (
                       <InputField
                         id="time"
