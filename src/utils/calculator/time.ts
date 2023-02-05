@@ -21,7 +21,7 @@ export const validateRushHourPeriods = (rushHourPeriods: RushHourPeriod[]): bool
   return true;
 };
 
-// Calculates an extra fee for orders made within rush hour periods
+// Calculates surcharge for orders made within rush hour periods
 export const calculateRushHourSurcharge = ({
   currentFee,
   time,

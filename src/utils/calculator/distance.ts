@@ -6,7 +6,7 @@ import {
 } from '../../constants/calculator';
 import { DistanceSurchargeCalculatorProps } from '../../types/calculator';
 
-// Calculates distance surcharge based on initial fee and additional fee if applicable
+// Calculates surcharge based on initial fee and additional fee if applicable
 export const calculateDistanceSurcharge = ({
   distance,
   initialDistance = INITIAL_DISTANCE,
