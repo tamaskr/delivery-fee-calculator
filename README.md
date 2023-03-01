@@ -1,11 +1,14 @@
 # Delivery Fee Calculator 🚗 🍕
 
-Frontend solution for Wolt's 2023 summer engineering intern position assignment.
-Thank you to Wolt's team for the challenge!
+Frontend solution to Wolt's 2023 Software Engineer Intern position assignment. Instructions can be found [here](https://github.com/woltapp/engineering-summer-intern-2023). Thank you to Wolt's team for the challenge!
 
 ## Installation
 
-1. Download and extract the ZIP file
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/tamaskr/delivery-fee-calculator.git
+   ```
 
 2. Navigate to the project's root folder
 
@@ -29,7 +32,7 @@ Thank you to Wolt's team for the challenge!
 
 ## Testing
 
-There are unit tests available for the delivery fee calculations and for components. The tests can be run with the command below
+Unit tests are available for delivery fee calculations and components. Tests can be run with the command below
 
 ```bash
 npm test
